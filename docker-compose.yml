@@ -1,5 +1,22 @@
-rabbitmq:
-  image: rabbitmq:management
-  ports:
-    - "5672:5672"
-    - "15672:15672"
+services:
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  one:
+    build:
+      context: src
+    volumes:
+      - ./src:/app/
+      - ./target:/build/
+    tty: true
+
+  two:
+    build:
+      context: src
+    volumes:
+      - ./src:/app/
+      - ./target:/build/
+    tty: true
